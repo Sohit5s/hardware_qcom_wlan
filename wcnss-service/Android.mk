@@ -22,6 +22,11 @@ LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/libmdmdetect/inc
 LOCAL_SHARED_LIBRARIES += libmdmdetect
 LOCAL_HEADER_LIBRARIES += libril-qc-qmi-services-headers
 endif #TARGET_USES_QCOM_WCNSS_QMI
+ifneq ($(TARGET_DISABLE_WCNSS_CONFIG_COPY),true)
+LOCAL_CFLAGS += -DWCNSS_COPY_CONFIG
+endif
+
+
 LOCAL_MODULE_TAGS := optional
 LOCAL_CFLAGS += -Wall -Werror
 include $(BUILD_EXECUTABLE)
